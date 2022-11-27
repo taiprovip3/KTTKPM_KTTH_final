@@ -4,10 +4,10 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: service_mentor
-          uri: http://localhost:8085/service_mentor/**
+        - id: service_jwt_token
+          uri: http://localhost:8081/service_jwt_token/**
           predicates:
-            - Path=/service_mentor/**
+            - Path=/service_jwt_token/**
             - Method=GET,POST
           metadata:
             cors:
@@ -17,11 +17,24 @@ spring:
                 - POST
               allowedHeaders: '*'
               maxAge: 30
-        - id: service_student
-          uri: http://localhost:8086/service_student/**
+        - id: admin_rest_template
+          uri: http://localhost:8086/admin_rest_template/**
           predicates:
-            - Path=/service_student/**
+            - Path=/admin_rest_template/**
             - Method=GET,POST
+          metadata:
+            cors:
+              allowedOrigins: '*'
+              allowedMethods:
+                - GET
+                - POST
+              allowedHeaders: '*'
+              maxAge: 30
+        - id: client_rest_template
+          uri: http://localhost:8083/client_rest_template/**
+          predicates:
+            - Path=/client_rest_template/**
+            - Method=GET,POST, DELETE
           metadata:
             cors:
               allowedOrigins: '*'
