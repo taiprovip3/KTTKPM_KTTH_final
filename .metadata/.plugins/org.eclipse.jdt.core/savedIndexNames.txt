@@ -53,7 +53,6 @@ INDEX VERSION 1.131+D:\Hoc ki 4\Kien truc va thiet ke phan mem\19524791_PhanTanT
 1330372122.index
 3073178753.index
 1242318600.index
-3267442780.index
 3293716329.index
 1893562263.index
 2188946387.index
@@ -165,7 +164,6 @@ INDEX VERSION 1.131+D:\Hoc ki 4\Kien truc va thiet ke phan mem\19524791_PhanTanT
 3488438032.index
 11058038.index
 2399521309.index
-136417564.index
 2277120944.index
 253059235.index
 339986830.index

@@ -12,17 +12,25 @@ management:
 
 
 resilience4j:
-  ratelimiter:
+  circuitbreaker:
     instances:
-      RATE_LIMITER_1:
-        limitForPeriod: 4
-        limitRefreshPeriod: 10s
-        timeoutDuration: 2s
+      CIRCUIT_BREAKER_1:
         registerHealthIndicator: true
-        eventConsumerBufferSize: 100
-
-
-
-
-
-
+        eventConsumerBufferSize: 10
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
+  retry:
+    instances:
+      RETRY_1:
+        maxRetryAttempts: 5
+        waitDuration: 10s
+  timelimiter:
+    instances:
+      TIME_LIMITER_1:
+        timeoutDuration: 2000
+        cancelRunningFuture: true
