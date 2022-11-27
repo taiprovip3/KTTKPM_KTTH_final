@@ -1,0 +1,36 @@
+package com.se.controller;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.se.entity.Mentor;
+import com.se.repository.MentorRepository;
+
+@RestController
+@RequestMapping("/service_mentor")
+public class MentorController {
+	
+	@Autowired
+	private MentorRepository mentorRepository;
+
+	@GetMapping("/getById/{id}")
+	public Mentor getMentoryById(@PathVariable long id) {
+		Optional<Mentor> mentorO = mentorRepository.findById(id);
+		if(mentorO.isPresent()) {
+			Mentor m = mentorO.get();
+			return m;
+		}
+		return null;
+	}
+	
+	@GetMapping("/hello")
+	public String hello() {
+		return "hello";
+	}
+	
+}

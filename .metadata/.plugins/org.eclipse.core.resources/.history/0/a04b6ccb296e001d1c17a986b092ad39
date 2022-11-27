@@ -1,0 +1,11 @@
+package com.se.entity;
+
+public class Student {
+	
+	
+	private long id;
+	private String name;
+	private int age;
+	
+	private Mentor mentor;
+}

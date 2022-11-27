@@ -1,0 +1,20 @@
+package com.se.entity;
+
+import java.io.Serializable;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+public class Student implements Serializable{
+	
+	@Id
+	@SequenceGenerator(name = "SEQ_GEN", sequenceName = "SEQ_USER", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GEN")
+	private long id;
+	private String name;
+	private int age;
+	
+	private Mentor mentor;
+}

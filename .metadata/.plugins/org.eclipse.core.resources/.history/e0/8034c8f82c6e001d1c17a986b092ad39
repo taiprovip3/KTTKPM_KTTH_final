@@ -1,0 +1,12 @@
+package com.se.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class StudentController {
+	
+	private RestTemplate restTemplate;
+	private final String SERVICE_ADMIN_PLANT_CRUD_URL = "http://localhost:8085/service_admin_plant_crud/plants/";
+	private int ATTEMP_RETRY = 1;
+	private long idToDelete = 0;
+}

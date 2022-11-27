@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: service_getway_api
+  cloud:
+    gateway:
+      routes:
+        - id: service_jwt_token
+          uri: http://localhost:8081/service_jwt_token/**
+          predicates:
+            - Path=/service_jwt_token/**
+            - Method=GET,POST
+          metadata:
+            cors:
+              allowedOrigins: '*'
+              allowedMethods:
+                - GET
+                - POST
+              allowedHeaders: '*'
+              maxAge: 30
+        - id: admin_rest_template
+          uri: http://localhost:8086/admin_rest_template/**
+          predicates:
+            - Path=/admin_rest_template/**
+            - Method=GET,POST
+          metadata:
+            cors:
+              allowedOrigins: '*'
+              allowedMethods:
+                - GET
+                - POST
+              allowedHeaders: '*'
+              maxAge: 30
+        - id: client_rest_template
+          uri: http://localhost:8083/client_rest_template/**
+          predicates:
+            - Path=/client_rest_template/**
+            - Method=GET,POST, DELETE
+          metadata:
+            cors:
+              allowedOrigins: '*'
+              allowedMethods:
+                - GET
+                - POST
+              allowedHeaders: '*'
+              maxAge: 30
+server:
+  port: 8080
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
